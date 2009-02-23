@@ -3,6 +3,8 @@ require 'rubygems'
 require 'sinatra'
 require 'encoder'
 
+File.open("logs/htpasswdapp_#{Sinatra::Application.port}.pid", 'w') { |f| f.write(Process.pid) }
+
 before do
   @encoder = Encoder.new
 end
