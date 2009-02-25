@@ -8,7 +8,7 @@ class Encoder
     chars.join('')     
   end
 
-  def encode(password)
+  def crypt(password)
     salt = gen_salt
     password.crypt(salt)
   end

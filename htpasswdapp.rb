@@ -13,11 +13,11 @@ get '/' do
   erb :home
 end
 
-get '/encode/:password' do
-  @encoder.encode(params[:password])
+get '/crypt/:password' do
+  @encoder.crypt(params[:password])
 end
 
-get '/encode/:user/:password' do
-  user, password = params[:user], @encoder.encode(params[:password])
+get '/crypt/:user/:password' do
+  user, password = params[:user], @encoder.crypt(params[:password])
   "#{user}:#{password}\n"
 end
