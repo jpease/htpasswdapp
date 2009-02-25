@@ -16,6 +16,12 @@ server domain, :web, :app
 
 namespace :deploy do
   task :restart do
+    sudo `monit restart all -g htpasswdapp`
+  end
 
+  task :set_executable, :roles => :app do
+    sudo `chmod +x /data/htpasswdapp/current/script/monit_sinatra`
   end
 end
+
+after "deploy:symlink_configs", "deploy:set_executable"
