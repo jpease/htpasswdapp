@@ -3,7 +3,7 @@
 # Check if PID file exists
 
 start_sinatra() {
-  ruby /data/$APPLICATION/current/$APPLICATION.rb -p $PORT -e production
+  /usr/local/bin/ruby /data/$APPLICATION/current/$APPLICATION.rb -p $PORT -e production
 }
 
 stop_sinatra() {
@@ -40,7 +40,7 @@ usage() {
   exit 1
 }
 
-if [ $# =lt 3 ];
+if [ $# -lt 3 ]; then
   usage
   exit 1
 else
