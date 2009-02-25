@@ -1,0 +1,42 @@
+body {
+  background-color: lightblue;
+  font: 13px Lucida Grande, Verdana, Arial, sans-serif;
+  border: 10px;
+}
+
+#container {
+  width: 600px;
+  margin: auto;
+}
+
+#page {
+  background-color: #fff;
+  padding: 15px;
+  margin: 0 2px;
+}
+
+h1 {
+  border: 3px solid #bbb;
+  padding: 10px;
+  text-align: center;
+  background-color: #ddd;
+  margin: 10px 0 0;
+}
+
+h2 { color: #444; }
+
+h3 { color: #222; }
+
+p {
+  padding-left: 10px;
+}
+
+#footer {
+  border: 3px solid #bbb;
+  padding: 10px;
+  text-align: center;
+  background-color: #ddd;
+  margin: 0;
+}
+
+
