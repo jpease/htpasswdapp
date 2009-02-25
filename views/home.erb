@@ -1,1 +1,29 @@
-htpasswdapp
+<h2>Why?</h2>
+<p>Sometimes you need htpasswd, but are on a system that does not have it.</p>
+
+<h2>Basic Usage</h2>
+
+<h3>Encode a password</h3>
+<p>$ curl http://htpasswdapp.com/crypt/password<br />
+  mq9YvcWYdlDLA
+</p>
+
+<h3>Standard format username & encoded password</h3>
+<p>$ curl http://htpasswdapp.com/crypt/username/password<br />
+  username:NQNumTabnWTq.
+</p>
+<D-c>
+<h3>Append to your users file</h3>
+<p>$ curl http://htpasswdapp.com/crypt/username/password >> website.users</p>
+
+<h2>Options</h2>
+
+<p>The above examples use CRYPT encryption, which is the htpasswd default.  SHA encryption is also available simply by replacing "crypt" in the URI with the desired type.</p>
+
+<h3>SHA Encryption</h3>
+<p>$ curl http://htpasswdapp.com/sha/password<br />
+  {SHA}W6ph5Mm5Pz8GgiULbPgzG37mj9g=
+  </p>
+
+<h3>MD5 Encryption</h3>
+<p>Might add this later</p>

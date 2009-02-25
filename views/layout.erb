@@ -3,10 +3,16 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>htpasswdapp.com</title>
+    <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type='text/css' />
   </head>
 
   <body>
-    <%= yield %>
-    <p id="footer">&copy; 2009 Justin Pease</p>
+    <div id="container">
+      <h1>htpasswdapp dot com</h1>
+      <div id="page">
+        <%= yield %>
+      </div>
+      <p id="footer">&copy; 2009 <a href="http://www.workingwithrails.com/person/6666-justin-pease">Justin Pease</a></p>
+    </div>
   </body>
 </html>
