@@ -5,6 +5,16 @@ SALT_CHARS = (%w[ . / ] + ("0".."9").to_a + ('A'..'Z').to_a + ('a'..'z').to_a).f
 
 class Encoder
 
+  def encode(encryption, password)
+    if encryption == "crypt"
+      crypt(password)
+    elsif encryption == "sha"
+      sha(password)
+    else
+      "Unsupported encryption type"
+    end
+  end
+
   def gen_salt
     chars = []
     8.times { chars << SALT_CHARS[rand(SALT_CHARS.size)] }
