@@ -21,3 +21,7 @@ get '/crypt/:user/:password' do
   user, password = params[:user], @encoder.crypt(params[:password])
   "#{user}:#{password}\n"
 end
+
+get '/sha/:password' do
+  @encoder.sha(params[:password])
+end
