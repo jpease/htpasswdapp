@@ -1,0 +1,61 @@
+#!/bin/sh
+
+# Check if PID file exists
+
+start_sinatra() {
+  ruby /data/$APPLICATION/current/$APPLICATION.rb -p $PORT -e production
+}
+
+stop_sinatra() {
+  find_pid
+  kill_process
+}
+
+find_pid() {
+  if [ -e "/data/${APPLICATION}/current/tmp/pids/${APPLICATION}_${PORT}.pid" ]; then 
+    PIDFILE="/data/${APPLICATION}/current/tmp/pids/${APPLICATION}_${PORT}.pid"
+    OLDPID=`cat ${PIDFILE}`
+    rm -f $PIDFILE
+
+  else # PID file didn't exist
+    OLDPID=`pgrep -f "ruby.*$APPLICATION.rb.*p $PORT.*"`
+  fi
+}
+
+kill_process() {
+  kill $OLDPID
+  sleep 5
+  if [ -e /proc/$OLDPID ]; then
+    kill -9 $OLDPID
+    sleep 3
+    if [ -e /proc/$OLDPID ]; then
+      echo "Process $OLDPID won't die!" >> /data/${APPLICATION}/current/logs/restart_errors.log 2>&1
+      exit 1
+    fi
+  fi
+}
+
+usage() {
+  echo "Usage: $0 application {start, stop} port"
+  exit 1
+}
+
+if [ $# =lt 3 ];
+  usage
+  exit 1
+else
+  APPLICATION=$1 ; ACTION=$2 ; PORT=$3
+fi
+
+case $ACTION in
+  start*)
+    start_sinatra
+    ;;
+  stop*)
+    stop_sinatra
+    ;;
+  *)
+    echo 2>&1 'Unrecognized Command: $ACTION'
+    usage
+    ;;
+esac
